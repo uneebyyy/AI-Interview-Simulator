@@ -11,7 +11,7 @@ export default function Login() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${process.env.NEXT_PUBLIC_HOST_URL}/dashboard`,
+    redirectTo: `${process.env.NEXT_PUBLIC_HOST_URL}`,
       queryParams: {
         prompt: "select_account",
       },
