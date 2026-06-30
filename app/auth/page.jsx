@@ -7,18 +7,19 @@ import { Chrome } from "lucide-react"
 export default function Login() {
   const router = useRouter()
 
-  const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:3000/dashboard",
-        queryParams: {
-          prompt: 'select_account',
-        }
-      }
-    })
-    if (error) console.log(error.message)
-  }
+ const signInWithGoogle = async () => {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${process.env.NEXT_PUBLIC_HOST_URL}/dashboard`,
+      queryParams: {
+        prompt: "select_account",
+      },
+    },
+  });
+
+  if (error) console.log(error.message);
+};
 
   return (
     <div style={{
